@@ -20,7 +20,7 @@ class Post extends Model
     ];
     protected $casts = [
         "tags" => "array",
-        "published" => "Boolean",
+        "published" => "boolean",
         "published_at" => "date"
     ];
 
