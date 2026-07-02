@@ -30,8 +30,11 @@ class PostsForm
                     ->schema([    
                         Group::make()
                             ->schema([
-                                TextInput::make('title'),
-                                TextInput::make('slug'),
+                                TextInput::make('title')->rules(['required', 'min:3', 'max:10']),
+                                TextInput::make('slug')->unique()
+                                    ->valedationMessage([
+                                        "Unique" => "Slug should be unique"
+                                    ]),
                                 Select::make('category_id')
                                     ->label('Category')
                                     ->options(Category::all()->pluck('name', 'id')),

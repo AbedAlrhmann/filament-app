@@ -16,7 +16,7 @@ class PostsTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image')->disk('public'),
+                ImageColumn::make('image')->disk("public"),
                 TextColumn::make('title'),
                 TextColumn::make('slug'),
                 TextColumn::make('category.name'),
