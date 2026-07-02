@@ -8,4 +8,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePosts extends CreateRecord
 {
     protected static string $resource = PostsResource::class;
+
+    protected function getFormActions(): array
+    {
+        return [];
+    }
 }
