@@ -8,6 +8,7 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ColorColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Forms\Components\DatePicker;
@@ -20,15 +21,30 @@ class PostsTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image')->disk("public"),
-                TextColumn::make('title')->sortable()->searchable(),
-                TextColumn::make('slug')->sortable()->searchable(),
-                TextColumn::make('category.name')->sortable()->searchable(),
-                ColorColumn::make('color'),
+                TextColumn::make('id')
+                    ->label('ID')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->weight('bold')
+                    ->color('primary'),
+                ImageColumn::make('image')->disk("public")->toggleable(),
+                TextColumn::make('title')->sortable()->searchable()->toggleable(),
+                TextColumn::make('slug')->sortable()->searchable()->toggleable(),
+                TextColumn::make('category.name')->sortable()->searchable()->toggleable(),
+                ColorColumn::make('color')->toggleable(),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime()
                     ->sortable()
+                    ->searchable()
+                    ->toggleable(),
+                TextColumn::make('tags')
+                    ->label('Tags')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->weight('bold')
+                    ->color('primary'),
+                IconColumn::make('published')
+                    ->boolean()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])->defaultSort('title', 'asc')
                 ->filters([
                 Filter::make('created_at')
