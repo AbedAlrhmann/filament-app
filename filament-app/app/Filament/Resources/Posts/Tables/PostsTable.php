@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Posts\Tables;
 
+use App\Models\Post;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\DeleteAction;
@@ -63,10 +65,10 @@ class PostsTable
                                 $q->whereDate('created_at', $date);
                             });
                     }),
-                SelectFilter::make('category_id')
-                    ->label('Select Category')
-                    ->relationship('category', 'name')
-                    ->preload(),
+                    SelectFilter::make('category_id')
+                        ->label('Select Category')
+                        ->relationship('category', 'name')
+                        ->preload(),
             ])
             ->recordActions([
                 EditAction::make(),

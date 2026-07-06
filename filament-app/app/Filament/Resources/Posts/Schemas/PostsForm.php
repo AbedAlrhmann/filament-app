@@ -37,7 +37,8 @@ class PostsForm
                                     ]),
                                 Select::make('category_id')
                                     ->label('Category')
-                                    ->options(Category::all()->pluck('name', 'id')),
+                                    ->relationship("category" , "name")
+                                    ->serchable(),
                                 ColorPicker::make('color'),
                                 MarkdownEditor::make('body'),
                             ])
