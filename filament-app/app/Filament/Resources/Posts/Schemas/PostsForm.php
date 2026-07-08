@@ -51,7 +51,9 @@ class PostsForm
                                 ]),
                             Section::make('Meta')
                                 ->schema([
-                                    TagsInput::make('tags'),
+                                    Select::make('tags')
+                                        ->relationship("tags", "name")
+                                        ->multiple(),
                                     Checkbox::make('published'),
                                     DatePicker::make('published_at')
                                 ])

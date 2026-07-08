@@ -15,16 +15,18 @@ class Post extends Model
         "image",
         "published",
         "published_at",
-        "tags"
 
     ];
     protected $casts = [
-        "tags" => "array",
         "published" => "boolean",
         "published_at" => "date"
     ];
 
     public function category(){
-	return $this->belongsTo(Category::class);
-}
+        return $this->belongsTo(Category::class);
+    }
+
+    public function tags(){
+        return $this->belongsToMany(Tag::class, "post_tag");
+    }
 }

@@ -13,6 +13,8 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Filament\Resources\Posts\RelationManagers\TagsRelationManager;
+
 
 class PostsResource extends Resource
 {
@@ -31,20 +33,19 @@ class PostsResource extends Resource
     {
         return PostsTable::configure($table);
     }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
             'index' => ListPosts::route('/'),
             'create' => CreatePosts::route('/create'),
             'edit' => EditPosts::route('/{record}/edit'),
+        ];
+        
+    }
+    public static function getRelations(): array
+    {
+        return [
+            TagsRelationManager::class,
         ];
     }
 }
