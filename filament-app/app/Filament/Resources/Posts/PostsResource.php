@@ -26,6 +26,8 @@ class PostsResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'title';
+    protected static string|\UnitEnum|null $navigationGroup = "Masters";
+
 
     protected static string|\UnitEnum|null $navigationGroup = "Blog";
 
