@@ -14,7 +14,10 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use App\Filament\Resources\Posts\RelationManagers\TagsRelationManager;
-
+use Dom\ParentNode;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Override;
 
 class PostsResource extends Resource
 {
@@ -24,6 +27,25 @@ class PostsResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    #[Override]
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ["title", "slug", "category.name"];
+    }
+    #[Override]
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            "Slug" => $record->slug,
+            "Category" => $record->category->name
+        ];
+    }
+
+    #[Override]
+    public static function getGlobalSearchEloquentQuery(): Builder
+    {
+        return Parent::getGlobalSearchEloquentQuery()->with(["category"]);
+    }
     public static function form(Schema $schema): Schema
     {
         return PostsForm::configure($schema);
