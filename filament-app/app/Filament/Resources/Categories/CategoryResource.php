@@ -23,6 +23,8 @@ class CategoryResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    protected static string|\UnitEnum|null $navigationGroup = "Blog";
+
     public static function form(Schema $schema): Schema
     {
         return CategoryForm::configure($schema);
