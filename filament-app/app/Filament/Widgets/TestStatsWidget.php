@@ -12,13 +12,15 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class TestStatsWidget extends StatsOverviewWidget
 {
+    protected static ?int $sort = 2;
+
     protected function getStats(): array
     {
         $totalUsers = User::query()->count('*');
         return [
-            // Stat::make("Total Users", $totalUsers)
-            //     ->description("Total number of users of this years")
-            //     ->descriptionIcon(HeroIcon::ArrowUpLeft, IconPosition::Before)
+            Stat::make("Total Users", $totalUsers)
+                ->description("Total number of users of this years")
+                ->descriptionIcon(HeroIcon::ArrowUpLeft, IconPosition::Before)
             //     ->chart(
             //         User::selectRaw("MONTH(created_at) as month, COUNT(*) as count", [])
             //             ->whereYear("created_at", now()->year)
@@ -27,11 +29,11 @@ class TestStatsWidget extends StatsOverviewWidget
             //             ->pluck("count")
             //             ->toArray()
             //     )
-            //     ->descriptionColor("success")
-            //     ->color("success"),
-            // Stat::make("Total Post", Post::count('*'))
-            //     ->description("Total number of Post of this years")
-            //     ->descriptionIcon(HeroIcon::ArrowUpLeft, IconPosition::Before)
+                ->descriptionColor("success")
+                ->color("success"),
+            Stat::make("Total Post", Post::count('*'))
+                ->description("Total number of Post of this years")
+                ->descriptionIcon(HeroIcon::ArrowUpLeft, IconPosition::Before)
             //     ->chart(
             //         User::selectRaw("MONTH(created_at) as month, COUNT(*) as count", [])
             //             ->whereYear("created_at", now()->year)
@@ -40,11 +42,11 @@ class TestStatsWidget extends StatsOverviewWidget
             //             ->pluck("count")
             //             ->toArray()
             //     )
-            //     ->descriptionColor("warning")
-            //     ->color("warning"),
-            //  Stat::make("Total Products", Product::count('*'))
-            //     ->description("Total number of Products of this years")
-            //     ->descriptionIcon(HeroIcon::ArrowUpLeft, IconPosition::Before)
+                ->descriptionColor("warning")
+                ->color("warning"),
+             Stat::make("Total Products", Product::count('*'))
+                ->description("Total number of Products of this years")
+                ->descriptionIcon(HeroIcon::ArrowUpLeft, IconPosition::Before)
             //     ->chart(
             //         User::selectRaw("MONTH(created_at) as month, COUNT(*) as count", [])
             //             ->whereYear("created_at", now()->year)
@@ -53,8 +55,8 @@ class TestStatsWidget extends StatsOverviewWidget
             //             ->pluck("count")
             //             ->toArray()
             //     )
-            //     ->descriptionColor("info")
-            //     ->color("info"),
+                ->descriptionColor("info")
+                ->color("info"),
         ];
     }
 }

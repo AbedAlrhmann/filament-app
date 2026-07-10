@@ -8,6 +8,8 @@ use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 class UserChartWidget extends ChartWidget
 {
+    protected static ?int $sort = 2;
+    protected static $color = "info";
     protected ?string $heading = 'New Registered User Chart';
 
     protected function getData(): array
