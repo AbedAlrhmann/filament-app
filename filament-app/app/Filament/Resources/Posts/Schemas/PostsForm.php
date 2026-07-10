@@ -32,7 +32,7 @@ class PostsForm
                             ->schema([
                                 TextInput::make('title')->rules(['required', 'min:3', 'max:10']),
                                 TextInput::make('slug')->unique()
-                                    ->valedationMessage([
+                                    ->validationMessage([
                                         "Unique" => "Slug should be unique"
                                     ]),
                                 Select::make('category_id')

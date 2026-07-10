@@ -29,7 +29,7 @@ class PostsResource extends Resource
     protected static string|\UnitEnum|null $navigationGroup = "Masters";
 
 
-    protected static string|\UnitEnum|null $navigationGroup = "Blog";
+    // protected static string|\UnitEnum|null $navigationGroup = "Blog";
 
     #[Override]
     public static function getGloballySearchableAttributes(): array
