@@ -3,9 +3,11 @@
 namespace App\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
+use Filament\Widgets\Concerns\InteractsWithPageFilters;
 
 class UserPieChartWidget extends ChartWidget
 {
+    use InteractsWithPageFilters;
     protected ?string $heading = 'User Pie Chart Widget';
 
     protected ?string $maxHeight = '250px';
