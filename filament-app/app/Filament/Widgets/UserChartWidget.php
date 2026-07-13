@@ -11,9 +11,8 @@ class UserChartWidget extends ChartWidget
 {
     use InteractsWithPageFilters;
     protected static ?int $sort = 2;
-    protected static $color = "info";
+    protected string $color = 'info';
     protected ?string $heading = 'New Registered User Chart';
-
     protected function getData(): array
     {
         $startDate = $this->pageFilters['startDate'] ?? null;

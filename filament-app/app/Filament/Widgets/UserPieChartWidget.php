@@ -8,6 +8,7 @@ use Filament\Widgets\Concerns\InteractsWithPageFilters;
 class UserPieChartWidget extends ChartWidget
 {
     use InteractsWithPageFilters;
+    // protected $color = 'info';
     protected ?string $heading = 'User Pie Chart Widget';
 
     protected ?string $maxHeight = '250px';
