@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->text('app_authentication_secret')->nullable();
+        Schema::table('user', function (Blueprint $table) {
+            //
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('app_authentication_secret');
+            $table->boolean('has_email_authentication')->defult(false);
         });
     }
 };

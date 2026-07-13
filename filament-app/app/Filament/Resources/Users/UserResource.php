@@ -46,7 +46,7 @@ class UserResource extends Resource
     public static function getWidgets(): array
     {
         return [
-            UserCounterWidget::class
+            // UserCounterWidget::class
         ];
     }
     public static function getPages(): array

@@ -11,11 +11,18 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Schemas\Components\Section;
+use Illuminate\Support\Str;
+
 use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Group;
 use App\Models\Category;
+use App\Models\Post;
 use Filament\Forms\Components\Select;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Support\Icons\Heroicon;
+use Hamcrest\Core\Set;
+
+use function Livewire\after;
 
 class PostsForm
 {
@@ -30,7 +37,13 @@ class PostsForm
                     ->schema([    
                         Group::make()
                             ->schema([
-                                TextInput::make('title')->rules(['required', 'min:3', 'max:10']),
+                                TextInput::make('title')->rules(['required'])
+                                    ->live(onBlur:true)
+                                    ->afterStateUpdated(function (string $operation,string $state,Set $set, Get $get, Post $post) {
+                                        $set('slug', Str::slug($state));
+                                        // dd($get("category_id"));
+                                        dd($post);
+                                    }),
                                 TextInput::make('slug')->unique()
                                     ->validationMessage([
                                         "Unique" => "Slug should be unique"

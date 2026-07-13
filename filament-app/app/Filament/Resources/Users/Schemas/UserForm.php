@@ -23,9 +23,9 @@ class UserForm
                         TextInput::make("password")->password(),
                     ]),
                 Section::make("Location")
-                    ->Schema([
+                    ->schema([
                         Select::make("country_id")
-                            ->lable("Country")
+                            ->label("Country")
                             ->options(Country::pluck("name", "id"))
                             ->reactive()
                             ->afterStateUpdated(function($state , callable $set){
@@ -34,7 +34,7 @@ class UserForm
 
                             }),
                         Select::make("state_id")
-                            ->lable("State")
+                            ->label("State")
                             ->options(function(callable $get){
                                 $country = $get("country_id");
                                 if(!$country){
@@ -50,7 +50,7 @@ class UserForm
 
                             }),
                         Select::make("city_id")
-                            ->lable("City")
+                            ->label("City")
                             ->options(function(callable $get){
                                 $state = $get("state_id");
                                 if(!$state){
